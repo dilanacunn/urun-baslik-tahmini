@@ -5,7 +5,7 @@
 3. Veri setini `data/` klasörüne ekleyin  
 4. Hücreleri sırayla çalıştırarak çıktıları gözlemleyin
 
-Not: Veri setini yükleyemiyorsanız veya hata alıyorsanız HuggingFace üzerinden veri setini indirin.
+Not: Veri setini HuggingFace üzerinden veri setini indirin.
 Kaynak: https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/blob/main/raw_meta_All_Beauty/full-00000-of-00001.parquet
 Format: Parquet
 
@@ -80,21 +80,6 @@ F1 Score: 0.82
 
 Anlamsal Küme Dağılımı:
 ![image](https://github.com/user-attachments/assets/178d81ef-f418-4482-8252-a00942063d5a)
-
----
-
-## Dosya Yapısı
-
-urun-baslik-tahmini/  
-├── notebook/  
-│   └── urun_baslik_tahmin_projesi.ipynb  
-├── data/  
-│   └── full-00000-of-00001.parquet  
-├── ekran-goruntuleri/  
-│   ├── kategori-dagilimi.png  
-│   └── anlamsal-kume.png  
-├── README.md  
-
 
 ---
 
