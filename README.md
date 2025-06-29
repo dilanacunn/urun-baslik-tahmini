@@ -85,15 +85,15 @@ Anlamsal Küme Dağılımı:
 
 ## Dosya Yapısı
 
-urun-baslik-tahmini/
-├── notebook/
-│   └── urun_baslik_tahmin_projesi.ipynb   
-├── data/
-│   └── full-00000-of-00001.parquet        
-├── ekran-goruntuleri/
-│   ├── kategori-dagilimi.png             
-│   └── anlamsal-kume.png               
-├── README.md 
+urun-baslik-tahmini/  
+├── notebook/  
+│   └── urun_baslik_tahmin_projesi.ipynb  
+├── data/  
+│   └── full-00000-of-00001.parquet  
+├── ekran-goruntuleri/  
+│   ├── kategori-dagilimi.png  
+│   └── anlamsal-kume.png  
+├── README.md  
 
 
 ---
