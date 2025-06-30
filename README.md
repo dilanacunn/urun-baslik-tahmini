@@ -36,7 +36,7 @@ Proje, Google Colab üzerinde hazırlanmış olup GitHub'a .ipynb ve görsel ç�
 
 Kategori Dağılımı:
 
-![image](images/kategori-dagilimi.png)
+![kategori-dagilimi](https://github.com/user-attachments/assets/c5d9e3ee-eee0-4932-838a-ffc5ae2a9a54)
 
 ---
 
