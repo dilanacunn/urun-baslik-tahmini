@@ -36,7 +36,7 @@ Proje, Google Colab üzerinde hazırlanmış olup GitHub'a .ipynb ve görsel ç�
 
 Kategori Dağılımı:
 
-![image](https://github.com/user-attachments/assets/1f113d19-4a83-4049-848c-15214bfb3c2b.png)
+![image](kategori-dagilimi.png)
 
 ---
 
@@ -51,7 +51,7 @@ Kategori Dağılımı:
 - Üretilen açıklamalar tablo halinde sunuldu.
 
 ### Örnek Üretim:
-![T5 Açıklama Örnekleri 2](![image](https://github.com/user-attachments/assets/40e0e4da-3d87-4d08-8ee6-c943aa4a7fa7.png)
+![T5 Açıklama Örnekleri 2](![image](t5-aciklama-uretimi2.png)
 
 Modelin çıktıları oldukça tutarlı ve başlıkla uyumlu metinler üretmiştir.
 
@@ -68,7 +68,7 @@ Modelin çıktıları oldukça tutarlı ve başlıkla uyumlu metinler üretmişt
 
 ---
 
-### 📊 Performans Ölçümleri:
+### Performans Ölçümleri:
 - Accuracy: **%84**
 - F1 Score: **0.82**
 - `classification_report` ile detaylı sonuçlar analiz edildi.
@@ -90,7 +90,7 @@ Modelin çıktıları oldukça tutarlı ve başlıkla uyumlu metinler üretmişt
 
 Anlamsal Küme Dağılımı:
 
-![image](https://github.com/user-attachments/assets/178d81ef-f418-4482-8252-a00942063d5a.png)
+![image](anlamsal-kume-dagilimi.png)
 
 ---
 
