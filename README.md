@@ -51,9 +51,8 @@ Kategori Dağılımı:
 - Üretilen açıklamalar tablo halinde sunuldu.
 
 ### Örnek Üretim:
-![T5 Açıklama Örnekleri 2](![image](t5-aciklama-uretimi2.png)
 
-Modelin çıktıları oldukça tutarlı ve başlıkla uyumlu metinler üretmiştir.
+![t5-aciklama-uretimi2](https://github.com/user-attachments/assets/f201f3c3-5122-4a7d-826a-71bfcdfc8d3a)
 
 ---
 
@@ -90,7 +89,7 @@ Modelin çıktıları oldukça tutarlı ve başlıkla uyumlu metinler üretmişt
 
 Anlamsal Küme Dağılımı:
 
-![image](anlamsal-kume-dagilimi.png)
+![anlamsal-kume-dagilimi](https://github.com/user-attachments/assets/e5f9d2ba-625e-46f8-9fcf-9c5c0b6d8bfd)
 
 ---
 
