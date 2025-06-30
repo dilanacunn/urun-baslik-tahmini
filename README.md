@@ -1,28 +1,27 @@
 ## Nasıl Çalıştırılır?
 
-1. Google Colab veya Jupyter Notebook ortamı açın  
-2. `urun_baslik_tahmin.ipynb` dosyasını yükleyin  
-3. Veri setini `data/` klasörüne ekleyin  
-4. Hücreleri sırayla çalıştırarak çıktıları gözlemleyin
+1. Google Colab veya Jupyter Notebook ortamı açın.
+2. `urun_baslik_tahmin.ipynb` dosyasını yükleyin.  
+3. Veri setini `data/` klasörüne ekleyin.  
+4. Hücreleri sırayla çalıştırarak çıktıları gözlemleyin.
 
 Not: Veri setini HuggingFace üzerinden veri setini indirin.
 Kaynak: https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/blob/main/raw_meta_All_Beauty/full-00000-of-00001.parquet
-Format: Parquet
 
-# Ürün Başlığından Açıklama ve Kategori Tahmini
+# Ürün Başlığından Açıklama ve Kategori Tahmini (GenAI + ML Projesi)
 
-Bu projede e-ticaret verileri kullanılarak iki temel görev gerçekleştirilmiştir:
+Bu projede e-ticaret verileri kullanılarak iki temel görev gerçekleştirildi.
 
 1. Başlıktan açıklama üretimi (Text2Text Generation)
 2. Başlıktan kategori tahmini (Gözetimli Öğrenme)
 
-Proje, Google Colab üzerinde hazırlanmış olup GitHub'a .ipynb ve görsel çıktılarla birlikte yüklenmiştir.
+Proje, Google Colab üzerinde hazırlanmış olup GitHub'a .ipynb ve görsel çıktılarla birlikte yüklendi.
 
 ---
 
 ## 1. Veri Seti
 
-- Kullanılan veri: Amazon ürün verileri (örnek olarak 3000 satır alınmıştır)
+- Kullanılan veri: Amazon ürün verileri (örnek olarak 3000 satır alındı.)
 - Kullanılan sütunlar: product_title, product_description, category
 - Dosya formatı: `.parquet`
 
@@ -30,62 +29,84 @@ Proje, Google Colab üzerinde hazırlanmış olup GitHub'a .ipynb ve görsel ç�
 
 ## 2. Keşifsel Veri Analizi (EDA)
 
-- value_counts() ile kategori dağılımı incelenmiştir.
-- Ürün başlıklarının ve açıklamaların uzunluklarına bakılmıştır.
-- Matplotlib kullanılarak temel grafikler oluşturulmuştur.
+- value_counts() ile kategori dağılımı incelendi.
+- Ürün başlıklarının ve açıklamaların uzunluklarına bakıldı.
+- Aşırı kısa/uzun başlıklar ve boş açıklamalar filtrelendi.
+- Matplotlib kullanılarak temel grafikler oluşturuldu.
 
 Kategori Dağılımı:
-![image](https://github.com/user-attachments/assets/1f113d19-4a83-4049-848c-15214bfb3c2b)
 
+![image](https://github.com/user-attachments/assets/1f113d19-4a83-4049-848c-15214bfb3c2b.png)
 
 ---
 
 ## 3. Başlıktan Açıklama Üretimi
 
-- HuggingFace üzerinden t5-small modeli kullanılmıştır.
-- pipeline("text2text-generation") fonksiyonu ile açıklama tahmini yapılmıştır.
-- Yaklaşık 10 başlık için açıklama üretilmiş ve örnek çıktı gözlemlenmiştir.
+- Projede HuggingFace üzerindeki `t5-small` modeli ile ürün başlıklarından açıklama üretildi. 
+- Modelin eğitim formatı gereği `"generate description: "` komutu başlıklara eklendi.
+
+### Kullanılan yöntem:
+- `pipeline("text2text-generation")`
+- Rastgele seçilen 5 başlık için açıklama üretimi.
+- Üretilen açıklamalar tablo halinde sunuldu.
+
+### Örnek Üretim:
+![T5 Açıklama Örnekleri 2](![image](https://github.com/user-attachments/assets/40e0e4da-3d87-4d08-8ee6-c943aa4a7fa7.png)
+
+Modelin çıktıları oldukça tutarlı ve başlıkla uyumlu metinler üretmiştir.
 
 ---
 
 ## 4. Başlıktan Kategori Tahmini (Gözetimli Öğrenme)
 
-- TfidfVectorizer ile başlık verisi sayısallaştırılmıştır.
-- İki farklı model denenmiştir:
-  - Logistic Regression
-  - Random Forest
-- train_test_split ile veri %80 eğitim, %20 test olarak ayrılmıştır.
-- Model performansı accuracy_score, f1_score ve classification_report ile değerlendirilmiştir.
+- Başlık verileri `TfidfVectorizer` ile vektörleştirildi.
+- İki farklı model eğitildi:
+  - `LogisticRegression`
+  - `RandomForestClassifier`
+- `train_test_split` ile veri %80 eğitim / %20 test olarak bölündü
+- `class_weight='balanced'` ve `SMOTE` ile dengesiz veri problemi ele alındı.
 
-Örnek çıktı:
+---
 
-Accuracy: 84%
-F1 Score: 0.82
-
+### 📊 Performans Ölçümleri:
+- Accuracy: **%84**
+- F1 Score: **0.82**
+- `classification_report` ile detaylı sonuçlar analiz edildi.
 
 ---
 
 ## 5. Kümeleme
 
-### TF-IDF + KMeans
+### Yöntem 1: TF-IDF + KMeans
 
-- TF-IDF vektörleri ile KMeans algoritması uygulanmıştır.
-- Kümelerden örnek başlıklar alınarak yorum yapılmıştır.
+- Başlıklar TF-IDF vektörlerine dönüştürüldü.
+- `KMeans(n_clusters=5)` ile kümeleme yapıldı.
+- Küme örnekleri tablo halinde gösterildi.
 
-### Sentence-Transformers + KMeans
+### Yöntem 2: Sentence-Transformers + KMeans
 
-- Gelişmiş vektörleme için all-MiniLM-L6-v2 modeli ile embedding yapılmıştır.
-- Her başlık 384 boyutlu vektöre dönüştürülmüş ve yeniden KMeans ile kümeleme uygulanmıştır.
-- Küme dağılımı dengeli ve tematik olarak anlamlı bulunmuştur.
+- `all-MiniLM-L6-v2` modeli ile başlıklar vektörleştirildi (embedding boyutu = 384).
+- Aynı şekilde KMeans ile kümeler oluşturuldu.
 
 Anlamsal Küme Dağılımı:
-![image](https://github.com/user-attachments/assets/178d81ef-f418-4482-8252-a00942063d5a)
+
+![image](https://github.com/user-attachments/assets/178d81ef-f418-4482-8252-a00942063d5a.png)
+
+---
+
+## Öğrendiklerim
+
+- HuggingFace ile metinden metin üretimi
+- TF-IDF ve embedding yöntemleriyle metin vektörleştirme
+- Lojistik regresyon ve rastgele orman ile sınıflandırma
+- SMOTE ile dengesiz veri setiyle başa çıkma
+- KMeans ile kümeleme ve anlamlılık kontrolü
 
 ---
 
 ## Notlar
 
-- Bu proje, doğal dil işleme (NLP), metin sınıflandırma ve gözetimli öğrenme gibi konuların temelini uygulamalı olarak öğrenmek için hazırlanmıştır.
+- Bu proje, doğal dil işleme (NLP), metin sınıflandırma ve gözetimli öğrenme gibi konuların temelini uygulamalı olarak öğrenmek için hazırlandı.
 - Başlangıç seviyesindeki veri bilimi projeleri için örnek teşkil eder.
-- Kodlar, açıklamalar ve grafikler dosyada yer almaktadır.  
+- Kodlar, açıklamalar ve grafikler dosyada yer almakta. 
 - Gelişime açıktır, katkılarınızı beklerim.
